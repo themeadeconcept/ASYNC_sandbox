@@ -1,47 +1,52 @@
-document.getElementById("button").addEventListener("click", loadData);
+// Synchronous method of callbacks - events happen at certain times, and post three doesn't render in time, only post one and two
 
-function loadData() {
-  // Create an XHR Object - Instantiate like every normal object
-  const xhr = new XMLHttpRequest();
+const posts = [
+  { title: "Post One", body: "This is post one" },
+  { title: "Post Two", body: "This is post two" },
+];
 
-  // OPEN - get request for data.txt
-  xhr.open("GET", "data.txt");
+// function createPost() {
+//   setTimeout(function () {
+//     posts.push(post);
+//   }, 2000);
+// }
 
-  // logs ready state
-  // console.log("READYSTATE", xhr.readyState);
+// function getPosts() {
+//   setTimeout(function () {
+//     let output = "";
+//     posts.forEach(function (post) {
+//       output += `<li>${post.title}</li>`;
+//     });
+//     document.body.innerHTML = output;
+//   }, 1000);
+// }
 
-  // Optional - used for spinners / loaders
-  xhr.onprogress = function () {
-    console.log("READYSTATE", xhr.readyState);
-  };
+// createPost({ title: "Post Three", body: "This is post three" });
 
-  xhr.onload = function () {
-    // logs readystate
-    console.log("READYSTATE", xhr.readyState);
+// getPosts();
 
-    if (this.status === 200) {
-      // console.log(this.responseText);
-      document.getElementById(
-        "output"
-      ).innerHTML = `<h1>${this.responseText}</h1>`;
-    }
-  };
+// Asynchronous Method of callbacks
 
-  xhr.onerror = function () {
-    console.log("Request error...");
-  };
-
-  xhr.send();
-
-  // readyState Values
-  // 0: request not initialized
-  // 1: server connection established
-  // 2: request received
-  // 3: processing request
-  // 4: request finished and response is ready
-
-  // HTTP Statuses
-  // 200: "OK"
-  // 403: "Forbidden"
-  // 404: "Not Found"
+//createPost now takes in a callback function (i.e. getPosts)
+function createPost(post, callback) {
+  setTimeout(function () {
+    posts.push(post);
+    //this DYNAMIC callback will now run BEFORE server finishes it's 2 seconds
+    callback();
+  }, 2000);
 }
+
+function getPosts() {
+  setTimeout(function () {
+    let output = "";
+    posts.forEach(function (post) {
+      output += `<li>${post.title}</li>`;
+    });
+    document.body.innerHTML = output;
+  }, 1000);
+}
+
+// now that createPost takes in a callback function, the posts AND getPosts are rendered ASYNCHRONOUSLY
+createPost({ title: "Post Three", body: "This is post three" }, getPosts);
+
+// CALLBACKS are just FUNCTIONS that can be passed into another function and called within that function

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "company": "123 Designs",
+    "phone": "123-456-7890"
+  },
+  {
+    "id": 2,
+    "name": "Reinharts Gideon",
+    "company": "The Castle",
+    "phone": "968-523-6659"
+  },
+  {
+    "id": 3,
+    "name": "Booger Townsend",
+    "company": "Names for Days",
+    "phone": "786-309-8890"
+  }
+]

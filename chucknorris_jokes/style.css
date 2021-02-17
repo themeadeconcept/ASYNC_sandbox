@@ -1,0 +1,33 @@
+.title {
+  grid-area: title;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-box {
+  grid-area: input;
+  bottom: 0;
+}
+
+.button-box {
+  grid-area: button;
+  bottom: 0;
+}
+
+.form-div {
+  grid-area: form;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  word-spacing: 2rem;
+  line-height: 5rem;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "title"
+    "form";
+}
