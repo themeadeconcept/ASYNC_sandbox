@@ -22,6 +22,7 @@ function getJokes(e) {
 
       if (response.type === "success") {
         // You cannot use forEach on an object, .value will give you the nested arrays
+        // joke represents the current iteration
         response.value.forEach(function (joke) {
           output += `<li>${joke.joke}</li>`;
         });

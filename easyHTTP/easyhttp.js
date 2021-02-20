@@ -1,6 +1,7 @@
 // ES5 Object Oriented Library (Prototypes not classes) / ASYNCHRONOUSLY
 
 function easyHTTP() {
+  // Instatiate new object
   this.http = new XMLHttpRequest();
 }
 
@@ -23,10 +24,11 @@ easyHTTP.prototype.get = function (url, callback) {
   this.http.send();
 };
 
-// Make an HTTP POST Request
+// Make an HTTP POST Request - asynchronsly with callbacks
 easyHTTP.prototype.post = function (url, data, callback) {
   this.http.open("POST", url, true);
 
+  // set the content type
   this.http.setRequestHeader("Content-type", "application/json");
 
   // stores the "this" value, for use beyond it's scope

@@ -5,6 +5,7 @@ function loadData() {
   const xhr = new XMLHttpRequest();
 
   // OPEN - get request for data.txt
+  // call open, get request, and file (data.txt)
   xhr.open("GET", "data.txt");
 
   // logs ready state
@@ -15,10 +16,12 @@ function loadData() {
     console.log("READYSTATE", xhr.readyState);
   };
 
+  // Do what we want to do with the data
   xhr.onload = function () {
     // logs readystate
     console.log("READYSTATE", xhr.readyState);
 
+    // if the status code is 200
     if (this.status === 200) {
       // console.log(this.responseText);
       document.getElementById(
@@ -31,6 +34,7 @@ function loadData() {
     console.log("Request error...");
   };
 
+  // actually sends the data
   xhr.send();
 
   // readyState Values

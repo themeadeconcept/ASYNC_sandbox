@@ -7,6 +7,7 @@ const http = new easyHTTP();
 //     console.log(posts);
 //   }
 // });
+
 // Get single Post
 // http.get("https://jsonplaceholder.typicode.com/posts/1", function (err, post) {
 //   if (err) {
@@ -22,6 +23,7 @@ const data = {
   body: "This is a custom post",
 };
 
+// Create Post
 // http.post(
 //   "https://jsonplaceholder.typicode.com/posts",
 //   data,
